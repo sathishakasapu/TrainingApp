@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header" style="text-align:center">
+        <b>CREATE NEW TRAINING</b>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="trainingForm" (ngSubmit)="CreateTraining(trainingForm.value)">
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label for="training">Training Name</label>
+                    <input type="text" class="form-control" formControlName="Name" id="name"
+                        placeholder="Enter Training Name" required>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="training">Start Date</label>
+                    <input type="date" class="form-control" formControlName="StartDate" id="startDate"
+                        placeholder="Enter Start Date" required>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="training">End Date</label>
+                    <input type="date" class="form-control" formControlName="EndDate" id="endDate"
+                        placeholder="Enter End Date" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <button type="submit" class="btn btn-primary" [disabled]="!trainingForm.valid">Add Training</button>
+                </div>
+            </div>
+            <div class="row">
+                    <p *ngIf="dataSaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" align="left">  
+                            {{message}}  
+                    </p> 
+                    <p *ngIf="trainingForm.errors" style="color:rgb(128, 0, 0);font-size:20px;font-weight:bold" align="left">  
+                        {{ trainingForm.errors?.dates | json }}  
+                </p> 
+            </div>
+        </form>
+    </div>
+</div>
